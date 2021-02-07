@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "340894994886",
+    "project_id": "substation-d75ee",
+    "storage_bucket": "substation-d75ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340894994886:android:59eabc67e1f7d61e1da2c7",
+        "android_client_info": {
+          "package_name": "com.multitouchenterprisekenya.substation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340894994886-9c9fpu0frrtl56d7kmffub6re4itoof7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyFRojCJbUkeQf_DoZKTY-9Lhg2c_O4Y8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340894994886-9c9fpu0frrtl56d7kmffub6re4itoof7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
