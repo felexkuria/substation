@@ -11,7 +11,7 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   // String time = 'loading';
   void setUpWorldTime() async {
-    await signInWithGoogle()
+     signInWithGoogle()
         .whenComplete(() {
       Navigator.of(context).push(
         MaterialPageRoute(

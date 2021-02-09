@@ -12,7 +12,7 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primaryColor: Color(0xFF343150),
+     // primarySwatch: MaterialAccentColor,
       timePickerTheme: TimePickerThemeData(
           backgroundColor: Color(0xFF343150),
           dialHandColor: activeCardColor,
@@ -24,7 +24,9 @@ void main() {
       '/': (context) => HomeScreen(),
       '/dashboard': (context) => DashBoard(),
       '/reading': (context) => ReadingScreen(),
-      'worker': (context) => Worker(),
+      'worker': (context) => Worker(
+            result660: null,
+          ),
       'loading': (context) => Loading(),
 
       //'worker': (context) => Loading(),

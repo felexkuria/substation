@@ -1,6 +1,7 @@
 class Readings {
   double activePower;
   double activePower1;
+  double reactivePower1;
   double reactivePower;
   double activePowerCode1 = 660.0;
   double activePowerCode2 = 1980.0;
@@ -17,7 +18,7 @@ class Readings {
   }
 
   void getReactivePower() {
-    result = reactivePower * 1980;
+    result = ((reactivePower - reactivePower1) * activePowerCode1);
   }
 
   void getactivePower() {
