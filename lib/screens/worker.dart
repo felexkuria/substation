@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Worker extends StatefulWidget {
- Worker({@required  this.result660});
+  Worker({@required this.result660});
   final String result660;
   @override
   _WorkerState createState() => _WorkerState();

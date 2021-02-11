@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:substation/services/sign_in.dart';
 import 'dashboard.dart';
 
 class Loading extends StatefulWidget {
@@ -8,24 +9,14 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   // String time = 'loading';
-  void loadLogin() async {
-    // signInWithGoogle().whenComplete(() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) {
-          // return null;
-          return DashBoard();
-        },
-      ),
-    );
-  }
+  void loadLogin() async {}
 
   @override
   void initState() {
     super.initState();
     // print('object in Init State');
     // worldTime.getTime();
-    loadLogin();
+    //loadLogin();
   }
 
   @override

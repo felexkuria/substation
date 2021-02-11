@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:substation/screens/dashboard.dart';
+import 'package:substation/services/sign_in.dart';
 import 'package:substation/widgets/custom_text_field.dart';
 
 import 'package:http/http.dart' as http;
@@ -207,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Row(
                           children: [
-                           FaIcon(
+                            FaIcon(
                               FontAwesomeIcons.envelope,
                               color: Colors.white,
                             ),
@@ -365,17 +367,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                         onPressed: () {
                           Navigator.pushNamed(context, 'loading');
-                          // signInWithGoogle()
-                          //     .whenComplete(() {
-                          //   Navigator.of(context).push(
-                          //     MaterialPageRoute(
-                          //       builder: (context) {
-                          //         // return null;
-                          //         return DashBoard();
-                          //       },
-                          //     ),
-                          //   );
-                          // });
+                          signInWithGoogle().whenComplete(() {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  // return null;
+                                  return DashBoard();
+                                },
+                              ),
+                            );
+                          });
                         },
                         child: Row(
                           children: [

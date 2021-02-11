@@ -2,54 +2,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
-final GoogleSignIn googleSignIn = GoogleSignIn();
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
 
-Future<String> signInWithGoogle() async {
-  await Firebase.initializeApp();
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-  final GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount.authentication;
-
-  final AuthCredential credential = GoogleAuthProvider.credential(
-    accessToken: googleSignInAuthentication.accessToken,
-    idToken: googleSignInAuthentication.idToken,
+  // Create a new credential
+  final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
   );
 
-  final UserCredential authResult =
-      await _auth.signInWithCredential(credential);
-  final User user = authResult.user;
-
-  if (user != null) {
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
-
-    final User currentUser = _auth.currentUser;
-    assert(user.uid == currentUser.uid);
-
-    print('signInWithGoogle succeeded: $user');
-
-    // getProfileImage() {
-    //   if (_auth.currentUser.photoURL != null) {
-    //     return Image.network(
-    //       _auth.currentUser.photoURL,
-    //       height: 100,
-    //       width: 100,
-    //     );
-    //   } else {
-    //     return Icon(Icons.account_circle, size: 100);
-    //   }
-    // }
-
-    return '$user';
-  }
-
-  return null;
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
 }
 
 Future<void> signOutGoogle() async {
-  await googleSignIn.signOut();
+  await GoogleSignIn().signOut();
 
   print("User Signed Out");
 }

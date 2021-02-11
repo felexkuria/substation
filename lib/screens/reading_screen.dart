@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:substation/constants/constant.dart';
 import 'package:substation/models/readings.dart';
-import 'package:substation/screens/dashboard.dart';
 import 'package:substation/screens/worker.dart';
 import 'package:substation/widgets/custom_text_field.dart';
 import 'package:substation/widgets/reading_card.dart';
@@ -52,8 +50,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
           backgroundColor: Color(0xFF3A3756),
           title: Text('Readings'),
           actions: [
-
-           // FaIcon(FontAwesomeIcons.bars,),
+            // FaIcon(FontAwesomeIcons.bars,),
           ],
         ),
         body: ListView.builder(
@@ -99,235 +96,25 @@ class _ReadingScreenState extends State<ReadingScreen> {
                   reading: 'N3 Cabinet',
                   status: 'PENDING',
                   fontW: FontWeight.w300,
-                  onPressed: () {
-                    Alert(
-                        context: context,
-                        title: "Calculate N3 Reading",
-                        content: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Form(
-                                key: _formKey,
-                                // ignore: deprecated_member_use
-                                autovalidate: _autoValidate,
-                                child: Column(
-                                  children: <Widget>[
-                                    CustomTextField(
-                                      onSaved: (input) {
-                                        _activepower = input;
-                                      },
-                                      // validator: emailValidator,
-                                      icon: Icon(Icons.wb_incandescent),
-                                      hint: "Active Power",
-                                      onChanged: (validator) {
-                                        setState(() => _activepower);
-                                      },
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    CustomTextField(
-                                      onSaved: (input) {
-                                        _reactivepower = input;
-                                      },
-                                      // validator: emailValidator,
-                                      icon: Icon(Icons.ac_unit),
-                                      hint: "Reactive Power",
-                                      onChanged: (validator) {
-                                        setState(() => _reactivepower);
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        buttons: [
-                          DialogButton(
-                            color: Color(0xFF343150),
-                            onPressed: () {
-                              print(_activepower);
-                            },
-                            child: _loading == false
-                                ? Text(
-                                    "Calculate",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  )
-                                : CircularProgressIndicator(
-                                    backgroundColor: Colors.red,
-                                  ),
-                          ),
-                        ]).show();
-                  },
+                  onPressed: () {},
                 ),
                 ReadingCard(
                   reading: 'N6 Cabinet',
                   status: 'PENDING',
                   fontW: FontWeight.w300,
-                  onPressed: () {
-                    Alert(
-                        context: context,
-                        title: "Calculate N6 Reading",
-                        content: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Form(
-                                key: _formKey,
-                                // ignore: deprecated_member_use
-                                autovalidate: _autoValidate,
-                                child: Column(
-                                  children: <Widget>[
-                                    CustomTextField(
-                                      onSaved: (input) {
-                                        _activepower = input;
-                                      },
-                                      // validator: emailValidator,
-                                      icon: Icon(Icons.wb_incandescent),
-                                      hint: "Active Power",
-                                      onChanged: (validator) {
-                                        setState(() => _activepower);
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        buttons: [
-                          DialogButton(
-                            color: Color(0xFF343150),
-                            onPressed: () {
-                              print(_activepower);
-                            },
-                            child: _loading == false
-                                ? Text(
-                                    "Calculate",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  )
-                                : CircularProgressIndicator(
-                                    backgroundColor: Colors.red,
-                                  ),
-                          ),
-                        ]).show();
-                  },
+                  onPressed: () {},
                 ),
                 ReadingCard(
                   reading: 'N7 Cabinet',
                   status: 'PENDING',
                   fontW: FontWeight.w300,
-                  onPressed: () {
-                    Alert(
-                        context: context,
-                        title: "Calculate N7 Reading",
-                        content: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Form(
-                                key: _formKey,
-                                // ignore: deprecated_member_use
-                                autovalidate: _autoValidate,
-                                child: Column(
-                                  children: <Widget>[
-                                    CustomTextField(
-                                      onSaved: (input) {
-                                        _activepower = input;
-                                      },
-                                      // validator: emailValidator,
-                                      icon: Icon(Icons.wb_incandescent),
-                                      hint: "Active Power",
-                                      onChanged: (validator) {
-                                        setState(() => _activepower);
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        buttons: [
-                          DialogButton(
-                            color: Color(0xFF343150),
-                            onPressed: () {
-                              print(_activepower);
-                            },
-                            child: _loading == false
-                                ? Text(
-                                    "Calculate",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  )
-                                : CircularProgressIndicator(
-                                    backgroundColor: Colors.red,
-                                  ),
-                          ),
-                        ]).show();
-                  },
+                  onPressed: () {},
                 ),
                 ReadingCard(
                   reading: 'N9 Cabinet',
                   status: 'PENDING',
                   fontW: FontWeight.w300,
-                  onPressed: () {
-                    Alert(
-                        context: context,
-                        title: "Calculate N9 Reading",
-                        content: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Form(
-                                key: _formKey,
-                                // ignore: deprecated_member_use
-                                autovalidate: _autoValidate,
-                                child: Column(
-                                  children: <Widget>[
-                                    CustomTextField(
-                                      onSaved: (input) {
-                                        _activepower = input;
-                                      },
-                                      // validator: emailValidator,
-                                      icon: Icon(Icons.wb_incandescent),
-                                      hint: "Active Power",
-                                      onChanged: (validator) {
-                                        setState(() => _activepower);
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        buttons: [
-                          DialogButton(
-                            color: Color(0xFF343150),
-                            onPressed: () {
-                              print(_activepower);
-                            },
-                            child: _loading == false
-                                ? Text(
-                                    "Calculate",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  )
-                                : CircularProgressIndicator(
-                                    backgroundColor: Colors.red,
-                                  ),
-                          ),
-                        ]).show();
-                  },
+                  onPressed: () {},
                 ),
                 ReadingCard(
                   reading: 'N10 Cabinet',
@@ -341,7 +128,9 @@ class _ReadingScreenState extends State<ReadingScreen> {
         ));
   }
 
-  Alert buildAlert(BuildContext context) {
+  Alert buildAlert(
+    BuildContext context,
+  ) {
     return Alert(
         context: context,
         title: "Calculate N2 Reading",
@@ -368,7 +157,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       setState(() {
                         _activepower = validator;
 
-                       // processing = _activepower;
+                        // processing = _activepower;
                         print(_activepower);
                       });
                     },
@@ -389,8 +178,6 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       });
                     },
                   ),
-
-
 
                   // TextField(
                   //   decoration: kReactivedecoration,
@@ -416,7 +203,13 @@ class _ReadingScreenState extends State<ReadingScreen> {
               //Navigator.popAndPushNamed(context, '/reading');
               //print(_activepower
               //print(_reactivepower);
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>Worker(result660: readings.result.toString()),),);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      Worker(result660: readings.result.toString()),
+                ),
+              );
               readings.getActivePower(
                 activePower1: double.parse(_activepower),
                 activePower: double.parse(_reactivepower),

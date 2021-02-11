@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:substation/widgets/person_card.dart';
 
@@ -14,7 +15,6 @@ String result;
 // const selectorCardColor =Color(0xFF343150);  Color(0xFF343150)
 
 class DashBoard extends StatefulWidget {
-
   @override
   _DashBoardState createState() => _DashBoardState();
 }
@@ -29,7 +29,7 @@ class _DashBoardState extends State<DashBoard> {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
-      lastDate: DateTime(2035),
+      lastDate: DateTime(2135),
     );
     if (dateTime != null && dateTime != _date) {
       setState(() {
@@ -80,9 +80,10 @@ class _DashBoardState extends State<DashBoard> {
           elevation: 5.0,
           title: Text(
             'Substation App',
-            style: TextStyle(
+            //style,
+            style: GoogleFonts.pacifico(
               color: Color(0xFFFBFCFF),
-              fontFamily: 'Pacifico',
+              //fontFamily: 'Pacifico',
               fontSize: 20.0,
               letterSpacing: 1.2,
               fontWeight: FontWeight.bold,
@@ -244,7 +245,8 @@ class _DashBoardState extends State<DashBoard> {
                             onPressed: () {
                               //Navigator.pushNamed(context, '/reading');
                             },
-                          ),ReadingCard(
+                          ),
+                          ReadingCard(
                             reading: '2000Hrs Reading',
                             status: 'PENDING',
                             fontW: FontWeight.w300,
@@ -252,7 +254,6 @@ class _DashBoardState extends State<DashBoard> {
                               // Navigator.pushNamed(context, '/reading');
                             },
                           ),
-
                         ],
                       ),
                     )
