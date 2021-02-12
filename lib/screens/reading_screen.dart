@@ -3,7 +3,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:substation/constants/constant.dart';
 import 'package:substation/models/readings.dart';
 import 'package:substation/screens/worker.dart';
-import 'package:substation/widgets/custom_text_field.dart';
 import 'package:substation/widgets/reading_card.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();

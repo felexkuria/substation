@@ -2,35 +2,12 @@ class Readings {
   double activePower;
   double activePower1;
   double reactivePower1;
-  String name;
+  // String name;
   double reactivePower;
   double activePowerCode1 = 660.0;
   double activePowerCode2 = 1980.0;
   double result;
-  Readings({this.name, this.activePower, this.reactivePower});
-  List<Readings> readings = [
-    Readings(
-      name: 'N1',
-    ),
-    Readings(
-      name: 'N2',
-    ),
-    Readings(
-      name: 'N3',
-    ),
-    Readings(
-      name: 'N6',
-    ),
-    Readings(
-      name: 'N8',
-    ),
-    Readings(
-      name: 'N9',
-    ),
-    Readings(
-      name: 'N10',
-    ),
-  ];
+  Readings({this.activePower, this.reactivePower});
 
   String getActivePower({double activePower, double activePower1}) {
     result = ((activePower - activePower1) * activePowerCode1);

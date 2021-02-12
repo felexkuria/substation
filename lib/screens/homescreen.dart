@@ -366,17 +366,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.all(16.0),
                         color: Colors.white,
                         onPressed: () {
-                          Navigator.pushNamed(context, 'loading');
-                          signInWithGoogle().whenComplete(() {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  // return null;
-                                  return DashBoard();
-                                },
-                              ),
-                            );
-                          });
+                          Navigator.pushNamed(context, '/dashboard');
+                          // signInWithGoogle().whenComplete(() {
+                          //   Navigator.of(context).push(
+                          //     MaterialPageRoute(
+                          //       builder: (context) {
+                          //         // return null;
+                          //         return DashBoard();
+                          //       },
+                          //     ),
+                          //   ); Navigator.pushNamed(context, '/dashboard');
+                          // });
+
+                          // Navigator.pushNamed(context, 'loading');
                         },
                         child: Row(
                           children: [

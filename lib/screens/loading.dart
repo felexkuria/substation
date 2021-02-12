@@ -17,6 +17,7 @@ class _LoadingState extends State<Loading> {
     // print('object in Init State');
     // worldTime.getTime();
     //loadLogin();
+    Navigator.pushNamed(context, '/dashboard');
   }
 
   @override

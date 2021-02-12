@@ -80,8 +80,8 @@ class _DashBoardState extends State<DashBoard> {
           elevation: 5.0,
           title: Text(
             'Substation App',
-            //style,
-            style: GoogleFonts.pacifico(
+            //style,R
+            style: TextStyle(
               color: Color(0xFFFBFCFF),
               //fontFamily: 'Pacifico',
               fontSize: 20.0,
