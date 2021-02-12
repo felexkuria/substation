@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:substation/widgets/person_card.dart';
 
@@ -9,8 +8,8 @@ import 'package:substation/widgets/select_card.dart';
 
 enum Time { month, today, quarter }
 
-const inActiveCardColor = Color(0xFFF9FAFC);
-const activeCardColor = Color(0xFF3A3756);
+const inActiveCardColor = Color(0xFF20BFA9);
+const activeCardColor = Color(0xFF070707);
 String result;
 // const selectorCardColor =Color(0xFF343150);  Color(0xFF343150)
 
@@ -23,7 +22,7 @@ class _DashBoardState extends State<DashBoard> {
   Time selectedTime;
   DateTime _date = DateTime.now();
 
-  final DateFormat _dateFormatter = DateFormat.yMMMMEEEEd();
+  final DateFormat _dateFormatter = DateFormat.yMMMMEEEEd().add_jms();
   void _handleDatetime() async {
     final DateTime dateTime = await showDatePicker(
       context: context,
@@ -43,7 +42,7 @@ class _DashBoardState extends State<DashBoard> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFF343150),
+        backgroundColor: Color(0xFF232228),
         appBar: AppBar(
           leading: IconButton(
             icon: FaIcon(
@@ -62,7 +61,7 @@ class _DashBoardState extends State<DashBoard> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'worker');
+                //Navigator.pushNamed(context, 'worker');
               },
               icon: FaIcon(
                 FontAwesomeIcons.userCircle,
@@ -76,7 +75,7 @@ class _DashBoardState extends State<DashBoard> {
               icon: FaIcon(FontAwesomeIcons.cog),
             )
           ],
-          backgroundColor: Color(0xFF3A3756),
+          backgroundColor: Color(0xFF0C0B10),
           elevation: 5.0,
           title: Text(
             'Substation App',
@@ -92,176 +91,179 @@ class _DashBoardState extends State<DashBoard> {
         ),
         body: ListView(
           children: [
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    PersonCard(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'worker');
-                      },
-                      radii: 40.0,
-                      font: 18.0,
-                      name: 'Wycliffe Wanyama',
-                      shift: 'OnShift',
-                      profile: AssetImage('assets/images/wycliffe.jpg'),
-                      taf: 'wanyama',
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    PersonCard(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'worker');
-                      },
-                      radii: 35.0,
-                      font: 18.0,
-                      name: 'Felex Kuria',
-                      profile: AssetImage('assets/images/profile.jpg'),
-                      shift: 'Rest',
-                      taf: 'Felex',
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    PersonCard(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'worker');
-                      },
-                      radii: 35.0,
-                      font: 18.0,
-                      name: 'Leonard',
-                      shift: 'Rest',
-                      profile: AssetImage('assets/images/leonard.jpg'),
-                      taf: 'Leonard',
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      // crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            // color: Color(0xFF3B1F83),
-                            margin: EdgeInsets.fromLTRB(5.0, 20.0, 5.0, 20.0),
-
-                            decoration: BoxDecoration(
-                              color: inActiveCardColor,
-                              // Color(0xFF3A3756)
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            child: Row(
-                              children: [
-                                /**Extract widget in their folder widget */
-                                SelectCard(
-                                  time: _dateFormatter.format(_date),
-                                  color: selectedTime == Time.today
-                                      ? activeCardColor
-                                      : inActiveCardColor,
-                                  fontColor: selectedTime == Time.today
-                                      ? inActiveCardColor
-                                      : activeCardColor,
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedTime = Time.today;
-                                      _handleDatetime();
-                                    });
-                                  },
-                                ),
-                                SelectCard(
-                                  time: "Month",
-                                  color: selectedTime == Time.month
-                                      ? activeCardColor
-                                      : inActiveCardColor,
-                                  fontColor: selectedTime == Time.month
-                                      ? inActiveCardColor
-                                      : activeCardColor,
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedTime = Time.month;
-                                    });
-                                  },
-                                ),
-                                SelectCard(
-                                  time: "Quarter",
-                                  color: selectedTime == Time.quarter
-                                      ? activeCardColor
-                                      : inActiveCardColor,
-                                  fontColor: selectedTime == Time.quarter
-                                      ? inActiveCardColor
-                                      : activeCardColor,
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedTime = Time.quarter;
-                                    });
-                                  },
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    // ListView.builder(
-                    //   itemCount: 2,
-                    //   itemBuilder: (BuildContext context, int index) {
-                    //     if (index == 0)
-                    //       return Padding(
-                    //         padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    //         child:
-                    //       );
-
-                    SingleChildScrollView(
-                      child: Column(
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 12.0, 0, 0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      PersonCard(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'worker');
+                        },
+                        radii: 60.0,
+                        font: 18.0,
+                        name: 'Wycliffe Wanyama',
+                        shift: 'OnShift',
+                        profile: AssetImage('assets/images/wycliffe.jpg'),
+                        taf: 'wanyama',
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      PersonCard(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'worker');
+                        },
+                        radii: 35.0,
+                        font: 18.0,
+                        name: 'Felex Kuria',
+                        profile: AssetImage('assets/images/profile.jpg'),
+                        shift: 'Rest',
+                        taf: 'Felex',
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      PersonCard(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'worker');
+                        },
+                        radii: 35.0,
+                        font: 18.0,
+                        name: 'Leonard',
+                        shift: 'Rest',
+                        profile: AssetImage('assets/images/leonard.jpg'),
+                        taf: 'Leonard',
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        // crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            _dateFormatter.format(_date),
-                            style: TextStyle(
-                                color: inActiveCardColor,
-                                letterSpacing: 1.0,
-                                fontFamily: 'Quicksand',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20.0),
-                          ),
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          ReadingCard(
-                            reading: '0800Hrs Reading',
-                            status: 'PENDING',
-                            fontW: FontWeight.w300,
-                            onPressed: () {
-                              //Navigator.pushNamed(context, '/reading');
-                            },
-                          ),
-                          ReadingCard(
-                            reading: '1400Hrs Reading',
-                            status: 'PENDING',
-                            fontW: FontWeight.w300,
-                            onPressed: () {
-                              //Navigator.pushNamed(context, '/reading');
-                            },
-                          ),
-                          ReadingCard(
-                            reading: '2000Hrs Reading',
-                            status: 'PENDING',
-                            fontW: FontWeight.w300,
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/reading');
-                            },
+                          Expanded(
+                            child: Container(
+                              // color: Color(0xFF3B1F83),
+                              margin: EdgeInsets.fromLTRB(5.0, 20.0, 5.0, 20.0),
+
+                              decoration: BoxDecoration(
+                                color: Color(0xFF20BFA9),
+                                // Color(0xFF3A3756)
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              child: Row(
+                                children: [
+                                  /**Extract widget in their folder widget */
+                                  SelectCard(
+                                    time: _dateFormatter.format(_date),
+                                    color: selectedTime == Time.today
+                                        ? activeCardColor
+                                        : inActiveCardColor,
+                                    fontColor: selectedTime == Time.today
+                                        ? inActiveCardColor
+                                        : activeCardColor,
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedTime = Time.today;
+                                        _handleDatetime();
+                                      });
+                                    },
+                                  ),
+                                  SelectCard(
+                                    time: "Month",
+                                    color: selectedTime == Time.month
+                                        ? activeCardColor
+                                        : inActiveCardColor,
+                                    fontColor: selectedTime == Time.month
+                                        ? inActiveCardColor
+                                        : activeCardColor,
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedTime = Time.month;
+                                      });
+                                    },
+                                  ),
+                                  SelectCard(
+                                    time: "Quarter",
+                                    color: selectedTime == Time.quarter
+                                        ? activeCardColor
+                                        : inActiveCardColor,
+                                    fontColor: selectedTime == Time.quarter
+                                        ? inActiveCardColor
+                                        : activeCardColor,
+                                    onPressed: () {
+                                      setState(() {
+                                        selectedTime = Time.quarter;
+                                      });
+                                    },
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                    )
-                    //   },
-                    // )
-                  ],
-                ),
-              ],
+                      // ListView.builder(
+                      //   itemCount: 2,
+                      //   itemBuilder: (BuildContext context, int index) {
+                      //     if (index == 0)
+                      //       return Padding(
+                      //         padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      //         child:
+                      //       );
+
+                      SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Text(
+                              _dateFormatter.format(_date),
+                              style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  letterSpacing: 1.0,
+                                  fontFamily: 'Quicksand',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20.0),
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            ReadingCard(
+                              reading: '0800Hrs Reading',
+                              status: 'PENDING',
+                              fontW: FontWeight.w300,
+                              onPressed: () {
+                                //Navigator.pushNamed(context, '/reading');
+                              },
+                            ),
+                            ReadingCard(
+                              reading: '1400Hrs Reading',
+                              status: 'PENDING',
+                              fontW: FontWeight.w300,
+                              onPressed: () {
+                                //Navigator.pushNamed(context, '/reading');
+                              },
+                            ),
+                            ReadingCard(
+                              reading: '2000Hrs Reading',
+                              status: 'PENDING',
+                              fontW: FontWeight.w300,
+                              onPressed: () {
+                                // Navigator.pushNamed(context, '/reading');
+                              },
+                            ),
+                          ],
+                        ),
+                      )
+                      //   },
+                      // )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

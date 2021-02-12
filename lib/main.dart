@@ -12,12 +12,13 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-     // primarySwatch: MaterialAccentColor,
-      timePickerTheme: TimePickerThemeData(
-          backgroundColor: Color(0xFF343150),
-          dialHandColor: activeCardColor,
-          // hourMinuteColor: inActiveCardColor,
-          hourMinuteTextColor: Colors.white),
+      //primaryColor: activeCardColor,
+      primarySwatch: Colors.red,
+      // timePickerTheme: TimePickerThemeData(
+      //     backgroundColor: Color(0xFF343150),
+      //     dialHandColor: activeCardColor,
+      //     // hourMinuteColor: inActiveCardColor,
+      //     hourMinuteTextColor: Colors.white),
     ),
     initialRoute: '/',
     routes: {

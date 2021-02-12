@@ -3,12 +3,17 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:substation/constants/constant.dart';
 import 'package:substation/models/readings.dart';
 import 'package:substation/screens/worker.dart';
+import 'package:substation/widgets/custom_text_field.dart';
 import 'package:substation/widgets/reading_card.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 bool _autoValidate = true;
-String _activepower = '';
+String _activepower660 = '';
 //double myNumber = double.parse(_activepower);
+String _reactivepower660 = '';
+String _activepower1980 = '';
+String _reactivepower1980 = '';
+String _activepower = '';
 String _reactivepower = '';
 //double myNumber2 = double.parse(_reactivepower);
 //int activepower;
@@ -30,6 +35,10 @@ class _ReadingScreenState extends State<ReadingScreen> {
   TextEditingController _timeController = TextEditingController();
   TextEditingController _activepowerController = TextEditingController();
   TextEditingController _reactivepowerController = TextEditingController();
+  TextEditingController _activepowerController1 = TextEditingController();
+  TextEditingController _reactivepowerController1 = TextEditingController();
+  TextEditingController _activepowerController2 = TextEditingController();
+  TextEditingController _reactivepowerController2 = TextEditingController();
   void _handleTime() async {
     final TimeOfDay timeOfDay =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
@@ -44,9 +53,9 @@ class _ReadingScreenState extends State<ReadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF343150),
+        backgroundColor: Color(0xFF232228),
         appBar: AppBar(
-          backgroundColor: Color(0xFF3A3756),
+          backgroundColor: Color(0xFF0C0B10),
           title: Text('Readings'),
           actions: [
             // FaIcon(FontAwesomeIcons.bars,),
@@ -132,88 +141,71 @@ class _ReadingScreenState extends State<ReadingScreen> {
   ) {
     return Alert(
         context: context,
-        title: "Calculate N2 Reading",
+        title: "Calculate Today Reading",
         content: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  TextField(
-                      readOnly: true,
-                      controller: _timeController,
-                      onTap: _handleTime,
-                      decoration: kTimedecoration),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  TextField(
-                    controller: _activepowerController,
-                    decoration: kInputdecoration,
-                    keyboardType: TextInputType.number,
-                    onChanged: (validator) {
-                      setState(() {
-                        _activepower = validator;
+              TextField(
+                readOnly: true,
+                controller: _timeController,
+                onTap: _handleTime,
+                decoration: kTimedecoration,
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: _activepowerController,
+                decoration: kInputdecoration1,
+                keyboardType: TextInputType.number,
+                onChanged: (validator) {
+                  setState(() {
+                    _activepower = validator;
 
-                        // processing = _activepower;
-                        print(_activepower);
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  TextField(
-                    controller: _reactivepowerController,
-                    decoration: kReactivedecoration,
-                    keyboardType: TextInputType.number,
-                    onChanged: (validator) {
-                      setState(() {
-                        _reactivepower = validator;
+                    print(_activepower);
+                  });
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: _reactivepowerController,
+                decoration: kInputdecoration,
+                keyboardType: TextInputType.number,
+                onChanged: (validator) {
+                  setState(() {
+                    _reactivepower = validator;
 
-                        // processing = _activepower;
-                        //print(_reactivepower);
-                      });
-                    },
-                  ),
-
-                  // TextField(
-                  //   decoration: kReactivedecoration,
-                  //   controller: _reactivepowerController,
-                  //   keyboardType:TextInputType.number ,
-                  //
-                  //   onChanged: (validator) {
-                  //     setState(() {
-                  //       _reactivepower = validator;
-                  //       //print(_reactivepower);
-                  //     });
-                  //   },
-                  // ),
-                ],
+                    print(_reactivepower);
+                  });
+                },
               ),
             ],
           ),
         ),
         buttons: [
           DialogButton(
-            color: Color(0xFF343150),
+            color: Color(0xFF070707),
             onPressed: () {
-              //Navigator.popAndPushNamed(context, '/reading');
+              //Navigator.popAndPushNamed(context, '/reading');`
               //print(_activepower
               //print(_reactivepower);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      Worker(result660: readings.result.toString()),
+                  builder: (BuildContext context) => Worker(
+                    result660: readings.result2.toString(),
+                    result1980: readings.result3.toString(),
+                    result: readings.result.toString(),
+                  ),
                 ),
               );
               readings.getActivePower(
                 activePower1: double.parse(_activepower),
                 activePower: double.parse(_reactivepower),
               );
-              print(readings.result);
             },
             child: _loading == false
                 ? Text(
