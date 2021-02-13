@@ -16,17 +16,17 @@ class Readings {
     //print(result);
     result.toStringAsFixed(2);
 
-    return result.toString();
+    return result.toString().substring(0, 6);
 
     //print(result);
   }
 
-  String getReactivePower({double activePower, double activePower1}) {
+  String getReactivePower({double reactivePower, double reactivePower1}) {
     result2 = ((reactivePower - reactivePower1) * activePowerCode2);
     //print(result);
     result2.toStringAsFixed(2);
 
-    return result2.toString();
+    return result2.toString().substring(0, 6);
   }
 
   void getactivePower() {

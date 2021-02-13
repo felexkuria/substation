@@ -13,7 +13,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       //primaryColor: activeCardColor,
-      primarySwatch: Colors.red,
+      primarySwatch: Colors.green,
       // timePickerTheme: TimePickerThemeData(
       //     backgroundColor: Color(0xFF343150),
       //     dialHandColor: activeCardColor,

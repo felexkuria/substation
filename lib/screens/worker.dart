@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:substation/widgets/result_card.dart';
 
 class Worker extends StatefulWidget {
-  Worker({@required this.result660, this.result1980, this.result});
+  Worker({@required this.result660, this.result1980, this.result, this.date});
   final String result660;
   final String result1980;
   final String result;
+  final String date;
+
   @override
   _WorkerState createState() => _WorkerState();
 }
@@ -32,54 +35,28 @@ class _WorkerState extends State<Worker> {
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0), color: Colors.black),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Reading Time',
-                  //widget.result1980.substring(0, 7),
-                  style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                      color: Color(0xFFFFFFFF)),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Text(
-                  'data',
-                  //widget.result660.substring(0, 7),
-                  style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                      color: Color(0xFFFFFFFF)),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Text(
-                  // 'data',
-                  widget.result.substring(0, 7),
-                  style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                      color: Color(0xFFFFFFFF)),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+          Text(
+            widget.result660.substring(0, 6),
+            style: TextStyle(
+              fontFamily: 'Quicksand',
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.2,
+              color: Color(0xFF20BFA9),
             ),
+            overflow: TextOverflow.ellipsis,
+          ),
+          ResultCard(
+            date: widget.date,
+            result: '1',
+          ),
+          ResultCard(
+            date: widget.date,
+            result: widget.result,
+          ),
+          ResultCard(
+            date: widget.date,
+            result: widget.result,
           ),
         ],
       ),

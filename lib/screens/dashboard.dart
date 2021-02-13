@@ -82,7 +82,7 @@ class _DashBoardState extends State<DashBoard> {
             //style,R
             style: TextStyle(
               color: Color(0xFFFBFCFF),
-              //fontFamily: 'Pacifico',
+              fontFamily: 'Quicksand',
               fontSize: 20.0,
               letterSpacing: 1.2,
               fontWeight: FontWeight.bold,

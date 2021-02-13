@@ -3,7 +3,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:substation/constants/constant.dart';
 import 'package:substation/models/readings.dart';
 import 'package:substation/screens/worker.dart';
-import 'package:substation/widgets/custom_text_field.dart';
 import 'package:substation/widgets/reading_card.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -39,14 +38,18 @@ class _ReadingScreenState extends State<ReadingScreen> {
   TextEditingController _reactivepowerController1 = TextEditingController();
   TextEditingController _activepowerController2 = TextEditingController();
   TextEditingController _reactivepowerController2 = TextEditingController();
+
+  TimeOfDayFormat timeOfDayFormat = TimeOfDayFormat.HH_colon_mm;
   void _handleTime() async {
-    final TimeOfDay timeOfDay =
-        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    final TimeOfDay timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
     if (timeOfDay != null && timeOfDay != _timeOfDay) {
       setState(() {
         _timeOfDay = timeOfDay;
       });
-      _timeController.text = _timeOfDay.toString();
+      _timeController.text = _timeOfDay.format(context);
     }
   }
 
@@ -59,6 +62,13 @@ class _ReadingScreenState extends State<ReadingScreen> {
           title: Text('Readings'),
           actions: [
             // FaIcon(FontAwesomeIcons.bars,),
+
+            IconButton(
+                icon: Icon(
+                  Icons.more_vert,
+                  color: Colors.white,
+                ),
+                onPressed: null)
           ],
         ),
         body: ListView.builder(
@@ -76,7 +86,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    _timeOfDay.toString(),
+                    _timeOfDay.format(context),
                     style: kLabelTextStyle,
                   )
                 ],
@@ -89,7 +99,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                   status: 'PENDING',
                   fontW: FontWeight.w300,
                   onPressed: () {
-                    //
+                    buildAlert2(context).show();
                   },
                 ),
                 ReadingCard(
@@ -134,6 +144,88 @@ class _ReadingScreenState extends State<ReadingScreen> {
             );
           },
         ));
+  }
+
+  Alert buildAlert2(BuildContext context) {
+    return Alert(
+        context: context,
+        title: "Calculate Today Reading",
+        content: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                readOnly: true,
+                controller: _timeController,
+                onTap: _handleTime,
+                decoration: kTimedecoration,
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: _activepowerController1,
+                decoration: kInputdecoration1,
+                keyboardType: TextInputType.number,
+                onChanged: (validator) {
+                  setState(() {
+                    _activepower1980 = validator;
+
+                    print(_activepower1980);
+                  });
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: _reactivepowerController2,
+                decoration: kInputdecoration,
+                keyboardType: TextInputType.number,
+                onChanged: (validator) {
+                  setState(() {
+                    _reactivepower1980 = validator;
+
+                    print(_reactivepower1980);
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+        buttons: [
+          DialogButton(
+            color: Color(0xFF20BFA9),
+            onPressed: () {
+              //Navigator.popAndPushNamed(context, '/reading');`
+              //print(_activepower
+              //print(_reactivepower);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Worker(
+                    result660: readings.result2.toString(),
+                    result1980: readings.result3.toString(),
+                    result: readings.result.toString(),
+                    date: _timeController.text,
+                  ),
+                ),
+              );
+              readings.getReactivePower(
+                reactivePower1: double.parse(_activepower1980),
+                reactivePower: double.parse(_reactivepower1980),
+              );
+            },
+            child: _loading == false
+                ? Text(
+                    "Calculate",
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  )
+                : CircularProgressIndicator(
+                    backgroundColor: Colors.red,
+                  ),
+          ),
+        ]);
   }
 
   Alert buildAlert(
@@ -187,7 +279,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
         ),
         buttons: [
           DialogButton(
-            color: Color(0xFF070707),
+            color: Color(0xFF20BFA9),
             onPressed: () {
               //Navigator.popAndPushNamed(context, '/reading');`
               //print(_activepower
@@ -199,6 +291,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     result660: readings.result2.toString(),
                     result1980: readings.result3.toString(),
                     result: readings.result.toString(),
+                    date: _timeController.text,
                   ),
                 ),
               );
@@ -210,7 +303,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
             child: _loading == false
                 ? Text(
                     "Calculate",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Colors.black, fontSize: 20),
                   )
                 : CircularProgressIndicator(
                     backgroundColor: Colors.red,
