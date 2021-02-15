@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:substation/models/panels.dart';
+import 'package:substation/constants/constant.dart';
 
 class ResultCard extends StatelessWidget {
-  ResultCard({this.result, this.date});
+  ResultCard({this.result, this.date, this.panel, this.reading});
   final String result;
   final String date;
-  List<Panels> panels = [
-    Panels(names: 'N1'),
-    Panels(names: 'N2 Active'),
-    Panels(names: 'N2 Reactive'),
-    Panels(names: 'N3 Active'),
-    Panels(names: 'N3 Reactive'),
-    Panels(names: 'N6'),
-    Panels(names: 'N7'),
-    Panels(names: 'N9'),
-    Panels(names: 'N10'),
-    Panels(names: 'N1'),
-  ];
+  final String panel;
+  final TextStyle reading;
 
   @override
   Widget build(BuildContext context) {
@@ -31,28 +21,17 @@ class ResultCard extends StatelessWidget {
           Text(
             date,
             //widget.result1980.substring(0, 7),
-            style: TextStyle(
-              fontFamily: 'Quicksand',
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
-              color: Color(0xFF20BFA9),
-            ),
+
+            style: reading,
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
             width: 20.0,
           ),
           Text(
-            'Panel No',
+            panel,
             //widget.result660.substring(0, 7),
-            style: TextStyle(
-              fontFamily: 'Quicksand',
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
-              color: Color(0xFF20BFA9),
-            ),
+            style: reading,
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
@@ -61,13 +40,7 @@ class ResultCard extends StatelessWidget {
           Text(
             result,
             //widget.result.substring(0, 7),
-            style: TextStyle(
-              fontFamily: 'Quicksand',
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
-              color: Color(0xFF20BFA9),
-            ),
+            style: reading,
             overflow: TextOverflow.ellipsis,
           ),
         ],

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:substation/screens/dashboard.dart';
-import 'package:substation/services/sign_in.dart';
 import 'package:substation/widgets/custom_text_field.dart';
 
 import 'package:http/http.dart' as http;

@@ -137,3 +137,17 @@ const kTimedecoration = InputDecoration(
     borderSide: BorderSide(width: 0.8, color: activeCardColor),
   ),
 );
+const kReadingStyle = TextStyle(
+  fontFamily: 'Quicksand',
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  letterSpacing: 1.2,
+  color: Color(0xFF20BFA9),
+);
+const kDataStyle = TextStyle(
+  fontFamily: 'Quicksand',
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  letterSpacing: 1.2,
+  color: Colors.white,
+);

@@ -114,7 +114,88 @@ class _ReadingScreenState extends State<ReadingScreen> {
                   reading: 'N3 Cabinet',
                   status: 'PENDING',
                   fontW: FontWeight.w300,
-                  onPressed: () {},
+                  onPressed: () {
+                    Alert(
+                        context: context,
+                        title: "Calculate Today Reading",
+                        content: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            children: <Widget>[
+                              TextField(
+                                readOnly: true,
+                                controller: _timeController,
+                                onTap: _handleTime,
+                                decoration: kTimedecoration,
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              TextField(
+                                controller: _activepowerController,
+                                decoration: kInputdecoration1,
+                                keyboardType: TextInputType.number,
+                                onChanged: (validator) {
+                                  setState(() {
+                                    _activepower = validator;
+
+                                    print(_activepower);
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              TextField(
+                                controller: _reactivepowerController,
+                                decoration: kInputdecoration,
+                                keyboardType: TextInputType.number,
+                                onChanged: (validator) {
+                                  setState(() {
+                                    _reactivepower = validator;
+
+                                    print(_reactivepower);
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        buttons: [
+                          DialogButton(
+                            color: Color(0xFF20BFA9),
+                            onPressed: () {
+                              //Navigator.popAndPushNamed(context, '/reading');`
+                              //print(_activepower
+                              //print(_reactivepower);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => Worker(
+                                    result660: readings.result2.toString(),
+                                    result1980: readings.result3.toString(),
+                                    result: readings.result.toString(),
+                                    date: _timeController.text,
+                                  ),
+                                ),
+                              );
+                              readings.getActivePower(
+                                activePower1: double.parse(_activepower),
+                                activePower: double.parse(_reactivepower),
+                              );
+                            },
+                            child: _loading == false
+                                ? Text(
+                                    "Calculate",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 20),
+                                  )
+                                : CircularProgressIndicator(
+                                    backgroundColor: Colors.red,
+                                  ),
+                          ),
+                        ]).show();
+                  },
                 ),
                 ReadingCard(
                   reading: 'N6 Cabinet',

@@ -12,25 +12,15 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      //primaryColor: activeCardColor,
       primarySwatch: Colors.green,
-      // timePickerTheme: TimePickerThemeData(
-      //     backgroundColor: Color(0xFF343150),
-      //     dialHandColor: activeCardColor,
-      //     // hourMinuteColor: inActiveCardColor,
-      //     hourMinuteTextColor: Colors.white),
     ),
     initialRoute: '/',
     routes: {
       '/': (context) => HomeScreen(),
       '/dashboard': (context) => DashBoard(),
       '/reading': (context) => ReadingScreen(),
-      'worker': (context) => Worker(
-            result660: null,
-          ),
+      'worker': (context) => Worker(),
       'loading': (context) => Loading(),
-
-      //'worker': (context) => Loading(),
     },
   ));
 }
