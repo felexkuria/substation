@@ -132,14 +132,14 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                 height: 20.0,
                               ),
                               TextField(
-                                controller: _activepowerController,
+                                controller: _activepowerController2,
                                 decoration: kInputdecoration1,
                                 keyboardType: TextInputType.number,
                                 onChanged: (validator) {
                                   setState(() {
-                                    _activepower = validator;
+                                    _activepower660 = validator;
 
-                                    print(_activepower);
+                                    print(_activepower660);
                                   });
                                 },
                               ),
@@ -147,14 +147,14 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                 height: 20.0,
                               ),
                               TextField(
-                                controller: _reactivepowerController,
+                                controller: _reactivepowerController1,
                                 decoration: kInputdecoration,
                                 keyboardType: TextInputType.number,
                                 onChanged: (validator) {
                                   setState(() {
-                                    _reactivepower = validator;
+                                    _reactivepower660 = validator;
 
-                                    print(_reactivepower);
+                                    print(_reactivepower660);
                                   });
                                 },
                               ),
@@ -179,9 +179,9 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                   ),
                                 ),
                               );
-                              readings.getActivePower(
-                                activePower1: double.parse(_activepower),
-                                activePower: double.parse(_reactivepower),
+                              readings.getPowerConsumed(
+                                activePower1: double.parse(_activepower660),
+                                activePower: double.parse(_reactivepower660),
                               );
                             },
                             child: _loading == false

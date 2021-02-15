@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:substation/screens/reading_screen.dart';
 import 'package:substation/widgets/person_card.dart';
 
 import 'package:substation/widgets/reading_card.dart';
@@ -275,7 +276,12 @@ class _DashBoardState extends State<DashBoard> {
           ),
           backgroundColor: inActiveCardColor,
           onPressed: () {
-            Navigator.pushNamed(context, '/reading');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => ReadingScreen(),
+              ),
+            );
           },
         ),
       ),

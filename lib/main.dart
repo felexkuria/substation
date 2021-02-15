@@ -9,18 +9,13 @@ const inActiveCardColor = Color(0xFFF9FAFC);
 const activeCardColor = Color(0xFF3A3756);
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primarySwatch: Colors.green,
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: HomeScreen(),
     ),
-    initialRoute: '/',
-    routes: {
-      '/': (context) => HomeScreen(),
-      '/dashboard': (context) => DashBoard(),
-      '/reading': (context) => ReadingScreen(),
-      'worker': (context) => Worker(),
-      'loading': (context) => Loading(),
-    },
-  ));
+  );
 }
