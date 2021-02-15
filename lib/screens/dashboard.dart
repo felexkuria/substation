@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:substation/screens/reading_screen.dart';
+import 'package:substation/screens/worker.dart';
 import 'package:substation/widgets/person_card.dart';
 
 import 'package:substation/widgets/reading_card.dart';
@@ -114,9 +115,7 @@ class _DashBoardState extends State<DashBoard> {
                         width: 10.0,
                       ),
                       PersonCard(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'worker');
-                        },
+                        onPressed: () {},
                         radii: 35.0,
                         font: 18.0,
                         name: 'Felex Kuria',

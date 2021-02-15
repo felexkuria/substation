@@ -52,6 +52,22 @@ class _ReadingScreenState extends State<ReadingScreen> {
       _timeController.text = _timeOfDay.format(context);
     }
   }
+  //   @override
+  // void initState() {
+  //   super.initState();
+  //   if (widget.task != null) {
+  //     _title = widget.task.title;
+  //     _priority = widget.task.priority;
+  //     _date = widget.task.date;
+  //   }
+  //   _timeController.text = _timeOfDay.format(context);
+  // }
+
+  @override
+  void dispose() {
+    _timeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
